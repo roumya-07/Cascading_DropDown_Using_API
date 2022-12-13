@@ -29,6 +29,7 @@ namespace Cascading_DropDown_Using_API
             services.AddControllers();
             services.AddScoped<IProdReprository, ProdReprository>();
             services.AddScoped<IProdService, ProdService>();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +43,8 @@ namespace Cascading_DropDown_Using_API
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseEndpoints(endpoints =>
             {
