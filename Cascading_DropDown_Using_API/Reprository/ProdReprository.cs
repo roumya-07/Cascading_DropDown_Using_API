@@ -39,28 +39,13 @@ namespace Cascading_DropDown_Using_API.Reprository
             var cn = CreateConnection();
             if (cn.State == ConnectionState.Closed) cn.Open();
             DynamicParameters param = new DynamicParameters();
-            param.Add("@pname", pr.pname);
-            param.Add("@catid", pr.catid);
-            param.Add("@subcatid", pr.subcatid);
-            param.Add("@price", pr.price);
-            param.Add("@pqty", pr.pqty);
-            param.Add("@action", "Insert");
-            int x = cn.Execute("sp_psc", param, commandType: CommandType.StoredProcedure);
-            cn.Close();
-            return x;
-        }
-        public async Task<int> Update(Product pr)
-        {
-            var cn = CreateConnection();
-            if (cn.State == ConnectionState.Closed) cn.Open();
-            DynamicParameters param = new DynamicParameters();
             param.Add("@pid", pr.pid);
             param.Add("@pname", pr.pname);
             param.Add("@catid", pr.catid);
             param.Add("@subcatid", pr.subcatid);
             param.Add("@price", pr.price);
             param.Add("@pqty", pr.pqty);
-            param.Add("@action", "Update");
+            param.Add("@action", "Insert");
             int x = cn.Execute("sp_psc", param, commandType: CommandType.StoredProcedure);
             cn.Close();
             return x;

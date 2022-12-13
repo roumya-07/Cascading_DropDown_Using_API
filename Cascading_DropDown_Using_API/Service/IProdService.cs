@@ -14,7 +14,6 @@ namespace Cascading_DropDown_Using_API.Service
         public Task<List<SubCategory>> GetAllSubCategoryS();
         public Task<Product> GetProductByIdS(int pid);
         public Task<int> InsertS(Product pr);
-        public Task<int> UpdateS(Product pr);
         public Task<int> DeleteS(int pid);
     }
 }

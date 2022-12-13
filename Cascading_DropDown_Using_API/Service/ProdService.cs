@@ -47,10 +47,5 @@ namespace Cascading_DropDown_Using_API.Service
         {
             return await _prodrepo.Insert(pr);
         }
-
-        public async Task<int> UpdateS(Product pr)
-        {
-            return await _prodrepo.Update(pr);
-        }
     }
 }
