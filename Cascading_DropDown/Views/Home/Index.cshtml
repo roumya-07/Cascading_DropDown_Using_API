@@ -83,7 +83,7 @@
 
             $.getJSON("/Home/SubCat_Bind", { catid: id }, function (data) {
                 data = JSON.parse(data);
-                var v = "";
+                var v = "<option>Select One</option>";
                 $.each(data, function (i, v1) {
                     v += "<option value=" + v1.Value + ">" + v1.Text + "</option>";
                 });
