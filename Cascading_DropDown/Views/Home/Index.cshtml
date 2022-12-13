@@ -68,3 +68,65 @@
     <tbody>
     </tbody>
 </table>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(window).on("load", function () {
+        GetAllProducts();
+    });
+
+    $(document).ready(function () {
+        $("#catid").change(function () {
+            var id = $(this).val();
+            $("#subcatid").empty();
+
+            $.getJSON("/Prod/SubCat_Bind", { catid: id }, function (data) {
+                data = JSON.parse(data);
+                var v = "";
+                $.each(data, function (i, v1) {
+                    v += "<option value=" + v1.Value + ">" + v1.Text + "</option>";
+                });
+                $("#subcatid").html(v);
+            });
+        });
+    })
+
+    $("#saveupdate").click(function () {
+        var prod = { pid: $("#pid").val(), pname: $("#pname").val(), catid: $("#catid").val(), subcatid: $("#subcatid").val(), price: $("#price").val(), pqty: $("#pqty").val() };
+        $.post("/Prod/Create", prod, function () {
+            alert("Data Inserted")
+            GetAllProducts();
+        });
+    });
+
+    function GetAllProducts() {
+        $("#table_product tbody tr").remove();
+
+        $.getJSON("/Home/GetProducts", function (data) {
+            data = JSON.parse(data);
+            $.each(data, function (i, prod) {
+                $("#table_product tbody").append(
+                    `<tr><td>` + prod.pid + `</td><td>` + prod.pname + `</td><td>` + prod.catname + `</td><td>` + prod.subcatname + `</td><td>` + prod.price + `</td><td>` + prod.pqty + `</td><td><button class="btn btn-primary" onclick="Edit(` + prod.pid + `)">Edit</button>&nbsp;&nbsp;<button class="btn btn-primary" onclick="Delete(` + prod.pid + `)">Delete</button></td></tr>>`
+                );
+            });
+        });
+    }
+
+    function Edit(pid) {
+        $.get("/Prods/Edit", { pid: pid }, function (data) {
+            prod = data;
+            $("#pid").val(prod.pid);
+            $("#pname").val(prod.pname);
+            $("#price").val(prod.price);
+            $("#pqty").val(prod.pqty);
+        });
+    }
+
+    function Delete(pid) {
+        $.post("Prods/Delete", { pid: pid }, function () {
+            alert("Data Deleted");
+            GetAllProducts();
+        });
+    }
+</script>

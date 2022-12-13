@@ -36,20 +36,28 @@ namespace Cascading_DropDown.Controllers
             return View();
         }
 
-        //public async Task<List<Category>> GetCategory()
-        //{
-        //    List<Category> prods = new List<Category>();
-        //    HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/Category").Result;
-
-        //    if (response.IsSuccessStatusCode)
-        //    {
-        //        string data = response.Content.ReadAsStringAsync().Result;
-
-        //        prods = JsonConvert.DeserializeObject<List<Category>>(data);
-        //        prods.Insert(0, new Category { catid = 0, catname = "Select One" });
-        //    }
-        //    return prods;
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Create(Product prod)
+        {
+            string data = JsonConvert.SerializeObject(prod);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = client.PutAsync(client.BaseAddress + "/Product/" + prod.pid, content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+        public async Task<JsonResult> GetProducts()
+        {
+            string data = null;
+            HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/Product").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                data = response.Content.ReadAsStringAsync().Result;
+            }
+            return Json(data);
+        }
 
         public int Delete(int pid)
         {
