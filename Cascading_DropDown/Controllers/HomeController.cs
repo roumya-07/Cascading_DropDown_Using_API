@@ -1,5 +1,6 @@
 ﻿using Cascading_DropDown.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
@@ -58,7 +59,23 @@ namespace Cascading_DropDown.Controllers
             }
             return Json(data);
         }
-
+        public async Task<JsonResult> SubCat_Bind(int catid)
+        {
+            string data = null;
+            HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/SubCategory/" + catid).Result;
+            List<SelectListItem> scalist = new List<SelectListItem>();
+            if (response.IsSuccessStatusCode)
+            {
+                data = response.Content.ReadAsStringAsync().Result;
+                var lstscat = JsonConvert.DeserializeObject<List<SubCategory>>(data);
+                foreach (SubCategory dr in lstscat)
+                {
+                    scalist.Add(new SelectListItem { Text = dr.subcatname, Value = dr.subcatid.ToString() });
+                }
+            }
+            var jsonres = JsonConvert.SerializeObject(scalist);
+            return Json(jsonres);
+        }
         public int Delete(int pid)
         {
             Product productlist = new Product();
