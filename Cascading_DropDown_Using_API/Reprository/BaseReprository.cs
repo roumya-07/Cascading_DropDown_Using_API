@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CascadingMvcUsingCrudDapper.Reprository
 {
-    public class BaseReprository
+    public class BaseReprository 
     {
         private readonly IConfiguration _configuration;
         protected BaseReprository(IConfiguration configuration)
