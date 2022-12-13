@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Cascading_DropDown.Controllers
@@ -31,6 +32,33 @@ namespace Cascading_DropDown.Controllers
                 lst = JsonConvert.DeserializeObject<List<Product>>(data);
             }
             return View(lst);
+        }
+
+        //public async Task<List<Category>> GetCategory()
+        //{
+        //    List<Category> prods = new List<Category>();
+        //    HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/Category").Result;
+
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        string data = response.Content.ReadAsStringAsync().Result;
+
+        //        prods = JsonConvert.DeserializeObject<List<Category>>(data);
+        //        prods.Insert(0, new Category { catid = 0, catname = "Select One" });
+        //    }
+        //    return prods;
+        //}
+
+        public int Delete(int pid)
+        {
+            Product productlist = new Product();
+            HttpResponseMessage response = client.DeleteAsync(client.BaseAddress + "/Product/" + pid).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return 1;
+
+            }
+            return 0;
         }
     }
 }
