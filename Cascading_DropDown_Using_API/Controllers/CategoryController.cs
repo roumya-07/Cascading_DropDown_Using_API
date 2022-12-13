@@ -1,4 +1,5 @@
-﻿using Cascading_DropDown_Using_API.Service;
+﻿using Cascading_DropDown_Using_API.Models;
+using Cascading_DropDown_Using_API.Service;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,10 @@ namespace Cascading_DropDown_Using_API.Controllers
     {
         _prodservice = prodservice;
     }
-}
+        [HttpGet]
+        public async Task<ActionResult<List<Product>>> GetAllCategory()
+        {
+            return await _prodservice.GetAllCategoryS();
+        }
+    }
 }
