@@ -1,3 +1,5 @@
+using Cascading_DropDown_Using_API.Reprository;
+using Cascading_DropDown_Using_API.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +27,8 @@ namespace Cascading_DropDown_Using_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<IProdReprository, ProdReprository>();
+            services.AddScoped<IProdService, ProdService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
