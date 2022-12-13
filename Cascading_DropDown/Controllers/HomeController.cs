@@ -76,6 +76,18 @@ namespace Cascading_DropDown.Controllers
             var jsonres = JsonConvert.SerializeObject(scalist);
             return Json(jsonres);
         }
+        public async Task<JsonResult> Edit(int pid)
+        {
+            Product productlist = new Product();
+            HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/Product/" + pid).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                string data = response.Content.ReadAsStringAsync().Result;
+                productlist = JsonConvert.DeserializeObject<Product>(data);
+            }
+            var jsonres = JsonConvert.SerializeObject(productlist);
+            return Json(jsonres);
+        }
         public int Delete(int pid)
         {
             Product productlist = new Product();

@@ -114,9 +114,21 @@
     }
 
     function Edit(pid) {
-        $.get("/Home/Edit", { pid: pid }, function (data) {
-            prod = data;
+        $.getJSON("/Home/Edit", { pid: pid }, function (data) {
+            prod = JSON.parse(data);
+            debugger
             $("#pid").val(prod.pid);
+            $("#catid").val(prod.catid);
+            $("#subcatid").empty();
+            $.getJSON("Home/SubCat_Bind", { catid: prod.catid }, function (data) {
+                data = JSON.parse(data);
+                $.each(data, function (i, subcatid) {
+                    $("#subcatid").append(
+                        `<option value=` + subcatid.Value + `>` + subcatid.Text + `</option>`
+                    );
+                    $("#subcatid").val(prod.subcatid);
+                });
+            });
             $("#pname").val(prod.pname);
             $("#catid").val(prod.catid);
             $("#subcatid").val(prod.subcatid);
