@@ -24,14 +24,16 @@ namespace Cascading_DropDown.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            string data = null;
+            List<Category> lstcat = new List<Category>();
             HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/Category").Result;
             if (response.IsSuccessStatusCode)
             {
-                data = response.Content.ReadAsStringAsync().Result;
-                ViewBag.Category = data;
+                string data = response.Content.ReadAsStringAsync().Result;
+                lstcat = JsonConvert.DeserializeObject<List<Category>>(data);
+                lstcat.Insert(0, new Category { catid = 0, catname = "Select One" });
+                ViewBag.Category = lstcat;
             }
-            return View(ViewBag.Category);
+            return View();
         }
 
         //public async Task<List<Category>> GetCategory()
