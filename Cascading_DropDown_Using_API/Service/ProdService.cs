@@ -19,7 +19,7 @@ namespace Cascading_DropDown_Using_API.Service
             return await _prodrepo.Delete(pid);
         }
 
-        public async Task<List<Product>> GetAllCategoryS()
+        public async Task<List<Category>> GetAllCategoryS()
         {
             return await _prodrepo.GetAllCategory();
         }
@@ -29,11 +29,11 @@ namespace Cascading_DropDown_Using_API.Service
             return await _prodrepo.GetAllProduct();
         }
 
-        public async Task<List<Product>> GetAllSubCategoryS(int catid)
+        public async Task<List<SubCategory>> GetAllSubCategoryS(int catid)
         {
             return await _prodrepo.GetAllSubCategory(catid);
         }
-        public async Task<List<Product>> GetAllSubCategoryS()
+        public async Task<List<SubCategory>> GetAllSubCategoryS()
         {
             return await _prodrepo.GetAllSubCategory();
         }

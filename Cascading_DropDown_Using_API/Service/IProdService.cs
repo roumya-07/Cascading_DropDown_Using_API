@@ -9,9 +9,9 @@ namespace Cascading_DropDown_Using_API.Service
     public interface IProdService
     {
         public Task<List<Product>> GetAllProductS();
-        public Task<List<Product>> GetAllCategoryS();
-        public Task<List<Product>> GetAllSubCategoryS(int catid);
-        public Task<List<Product>> GetAllSubCategoryS();
+        public Task<List<Category>> GetAllCategoryS();
+        public Task<List<SubCategory>> GetAllSubCategoryS(int catid);
+        public Task<List<SubCategory>> GetAllSubCategoryS();
         public Task<Product> GetProductByIdS(int pid);
         public Task<int> InsertS(Product pr);
         public Task<int> UpdateS(Product pr);

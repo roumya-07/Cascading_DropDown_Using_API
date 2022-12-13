@@ -77,33 +77,33 @@ namespace Cascading_DropDown_Using_API.Reprository
             return x;
         }
 
-        public async Task<List<Product>> GetAllCategory()
+        public async Task<List<Category>> GetAllCategory()
         {
             var cn = CreateConnection();
             if (cn.State == ConnectionState.Closed) cn.Open();
             DynamicParameters param = new DynamicParameters();
             param.Add("@action", "Fillcat");
-            var lstprod = cn.Query<Product>("sp_psc", param, commandType: CommandType.StoredProcedure).ToList();
+            var lstprod = cn.Query<Category>("sp_psc", param, commandType: CommandType.StoredProcedure).ToList();
             return lstprod;
         }
 
-        public async Task<List<Product>> GetAllSubCategory(int catid)
+        public async Task<List<SubCategory>> GetAllSubCategory(int catid)
         {
             var cn = CreateConnection();
             if (cn.State == ConnectionState.Closed) cn.Open();
             DynamicParameters param = new DynamicParameters();
             param.Add("@catid", catid);
             param.Add("@action", "Fillsubcat");
-            var lstprod = cn.Query<Product>("sp_psc", param, commandType: CommandType.StoredProcedure).ToList();
+            var lstprod = cn.Query<SubCategory>("sp_psc", param, commandType: CommandType.StoredProcedure).ToList();
             return lstprod;
         }
-        public async Task<List<Product>> GetAllSubCategory()
+        public async Task<List<SubCategory>> GetAllSubCategory()
         {
             var cn = CreateConnection();
             if (cn.State == ConnectionState.Closed) cn.Open();
             DynamicParameters param = new DynamicParameters();
             param.Add("@action", "Fillsubcatall");
-            var lstprod = cn.Query<Product>("sp_psc", param, commandType: CommandType.StoredProcedure).ToList();
+            var lstprod = cn.Query<SubCategory>("sp_psc", param, commandType: CommandType.StoredProcedure).ToList();
             return lstprod;
         }
     }
