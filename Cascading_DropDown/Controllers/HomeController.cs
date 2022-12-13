@@ -39,7 +39,7 @@ namespace Cascading_DropDown.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Create(Product prod)
-        {
+        { 
             string data = JsonConvert.SerializeObject(prod);
             StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
             HttpResponseMessage response = client.PutAsync(client.BaseAddress + "/Product/" + prod.pid, content).Result;

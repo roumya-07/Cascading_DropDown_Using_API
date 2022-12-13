@@ -34,7 +34,6 @@
         </div>
         <div class="form-group">
             <input type="button" id="saveupdate" value="Save" class="btn btn-primary" />
-            <input type="button" id="btnclear" value="Clear" class="btn btn-primary" />
         </div>
 
     </div>
@@ -95,7 +94,14 @@
     $("#saveupdate").click(function () {
         var prod = { pid: $("#pid").val(), pname: $("#pname").val(), catid: $("#catid").val(), subcatid: $("#subcatid").val(), price: $("#price").val(), pqty: $("#pqty").val() };
         $.post("/Home/Create", prod, function () {
-            alert("Data Inserted")
+            if (prod.pid == 0) {
+                alert("Data Inserted")
+                location.reload();
+            }
+            else {
+                alert("Data Updated")
+                location.reload();
+            }
             GetAllProducts();
         });
     });
