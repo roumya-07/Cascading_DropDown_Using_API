@@ -1,8 +1,65 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<Cascading_DropDown.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.pid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pqty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.catname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subcatname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.pid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pqty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.catname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subcatname)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.pid }) |
+                @Html.ActionLink("Details", "Details", new { id = item.pid }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.pid })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
