@@ -18,7 +18,7 @@ namespace Cascading_DropDown_Using_API.Controllers
         _prodservice = prodservice;
     }
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetAllCategory()
+        public async Task<ActionResult<List<Category>>> GetAllCategory()
         {
             return await _prodservice.GetAllCategoryS();
         }
