@@ -22,16 +22,16 @@ namespace Cascading_DropDown.Controllers
             client = new HttpClient();
             client.BaseAddress = baseAdd;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            List<Product> lst = new List<Product>();
-            HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/Product/").Result;
+            string data = null;
+            HttpResponseMessage response = client.GetAsync(client.BaseAddress + "/Category").Result;
             if (response.IsSuccessStatusCode)
             {
-                string data = response.Content.ReadAsStringAsync().Result;
-                lst = JsonConvert.DeserializeObject<List<Product>>(data);
+                data = response.Content.ReadAsStringAsync().Result;
+                ViewBag.Category = data;
             }
-            return View(lst);
+            return View(ViewBag.Category);
         }
 
         //public async Task<List<Category>> GetCategory()
