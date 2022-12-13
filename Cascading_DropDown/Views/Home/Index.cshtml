@@ -116,7 +116,6 @@
     function Edit(pid) {
         $.getJSON("/Home/Edit", { pid: pid }, function (data) {
             prod = JSON.parse(data);
-            debugger
             $("#pid").val(prod.pid);
             $("#catid").val(prod.catid);
             $("#subcatid").empty();
