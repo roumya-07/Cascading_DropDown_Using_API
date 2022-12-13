@@ -8,27 +8,26 @@ using System.Threading.Tasks;
 
 namespace Cascading_DropDown_Using_API.Controllers
 {
+    
+    [Route("api/[controller]")]
+    [ApiController]
     public class SubCategoryController : Controller
     {
-        [Route("api/[controller]")]
-        [ApiController]
-        public class CategoryController : Controller
+        private readonly IProdService _prodservice;
+        public SubCategoryController(IProdService prodservice)
         {
-            private readonly IProdService _prodservice;
-            public CategoryController(IProdService prodservice)
-            {
-                _prodservice = prodservice;
-            }
-            [HttpGet]
-            public async Task<ActionResult<List<Product>>> GetAllSubCategory()
-            {
-                return await _prodservice.GetAllSubCategoryS();
-            }
-            [HttpGet("{id}")]
-            public async Task<ActionResult<List<Product>>> GetAllSubCategory(int catid)
-            {
-                return await _prodservice.GetAllSubCategoryS(catid);
-            }
+            _prodservice = prodservice;
+        }
+        [HttpGet]
+        public async Task<ActionResult<List<Product>>> GetAllSubCategory()
+        {
+            return await _prodservice.GetAllSubCategoryS();
+        }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<List<Product>>> GetAllSubCategory(int catid)
+        {
+            return await _prodservice.GetAllSubCategoryS(catid);
         }
     }
+    
 }
