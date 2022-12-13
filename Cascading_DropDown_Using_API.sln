@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32802.440
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cascading_DropDown_Using_API", "Cascading_DropDown_Using_API\Cascading_DropDown_Using_API.csproj", "{63C6CD89-C104-4543-8F8C-B275725C41E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cascading_DropDown", "Cascading_DropDown\Cascading_DropDown.csproj", "{FC4D3CDA-4ADD-4F13-9181-AB9F39F50854}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cascading_DropDown", "Cascading_DropDown\Cascading_DropDown.csproj", "{FC4D3CDA-4ADD-4F13-9181-AB9F39F50854}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
