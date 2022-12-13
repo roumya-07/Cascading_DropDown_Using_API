@@ -1,10 +1,10 @@
-﻿using CascadingMvcUsingCrudDapper.Models;
+﻿using Cascading_DropDown_Using_API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CascadingMvcUsingCrudDapper.Service
+namespace Cascading_DropDown_Using_API.Service
 {
     public interface IProdService
     {

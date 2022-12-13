@@ -1,4 +1,4 @@
-﻿using CascadingMvcUsingCrudDapper.Models;
+﻿using Cascading_DropDown_Using_API.Models;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -7,7 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CascadingMvcUsingCrudDapper.Reprository
+namespace Cascading_DropDown_Using_API.Reprository
 {
     public class ProdReprository: BaseReprository, IProdReprository
     {

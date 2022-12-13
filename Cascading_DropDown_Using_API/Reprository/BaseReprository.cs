@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CascadingMvcUsingCrudDapper.Reprository
+namespace Cascading_DropDown_Using_API.Reprository
 {
     public class BaseReprository 
     {

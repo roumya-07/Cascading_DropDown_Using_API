@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CascadingMvcUsingCrudDapper.Models
+namespace Cascading_DropDown_Using_API.Models
 {
     public class Product
     {

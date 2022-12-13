@@ -1,10 +1,10 @@
-﻿using CascadingMvcUsingCrudDapper.Models;
+﻿using Cascading_DropDown_Using_API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CascadingMvcUsingCrudDapper.Reprository
+namespace Cascading_DropDown_Using_API.Reprository
 {
     public interface IProdReprository
     {
